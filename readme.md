@@ -18,5 +18,16 @@ docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
 ```
 *Importante: Executar como administrador*
 
+## Create connect for SQL Srever with JDBC
 
-docker build . -t cdc:latest
+```json
+{
+	"connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+	"mode": "bulk",
+	"topic.prefix": "",
+	"tasks.max": "1",
+	"name": "",
+	"connection.url": "jdbc:sqlserver://<server>:<port>;instance=MSSQLSERVER;databaseName=<dbname>;user=<user>;password=<password>",
+	"table.whitelist": ""
+}
+```
